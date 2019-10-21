@@ -1,0 +1,26 @@
+.font-text {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.font-nav {
+  font-size: 30px;
+  font-weight: bold;
+  color: rebeccapurple;
+}
+
+.div-style {
+  display: flex;
+  flex-direction: row;
+  background-color: lightblue;
+  justify-content: space-evenly;
+}
+
+li {
+  font-size: 25px;
+  color: firebrick;
+}
+
+button {
+    font-size: 25px;
+}
