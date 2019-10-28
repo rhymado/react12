@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 import Navbar from './Components/Navbar';
 import Welcome from './Components/Welcome';
 import Profile from './Components/Profile';
+import Hooks from './Components/Hooks';
 
 class App extends Component {
   // constructor () {
@@ -38,13 +39,14 @@ class App extends Component {
     // console.log (this.name);
     // console.log(this.props)
     return (
-      <div className="App"> 
-        <Navbar title="Navbar"/>
+      <div className="App">
+        <Navbar title="Navbar" />
         {/* <div className="Bg-Text">
           <p style={{fontSize: 100}}>{this.state.name}</p>
         </div> */}
-        <Route exact path='/' component={Welcome} />
-        <Route path='/profile' component={Profile} />
+        <Route exact path="/" component={Welcome} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/hooks" component={Hooks} />
         <Navbar title={this.state.name} />
       </div>
     );

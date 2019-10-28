@@ -1,17 +1,25 @@
 import React, {Component} from 'react';
-import Axios from 'axios';
+// import Axios from 'axios';
+import {connect} from 'react-redux';
+
+import {getGithub} from '../Public/Redux/Actions/github';
 
 class Welcome extends Component {
   state = {
     data: '',
   };
-  componentDidMount () {
-    Axios.get ('https://api.github.com/search/repositories?q=express')
-      .then (response => this.setState ({data: response.data.items}))
-      .catch (error => console.log (error));
-  }
+  componentDidMount = async () => {
+    // Axios.get ('https://api.github.com/search/repositories?q=express')
+    //   .then (response => this.setState ({data: response.data.items}))
+    //   .catch (error => console.log (error));
+    await this.props.dispatch (getGithub ());
+    // console.log ('props github', this.props.github);
+    this.setState ({
+      data: this.props.github.githubList,
+    });
+  };
   render () {
-    console.log (typeof this.state.data);
+    console.log (this.state.data);
     return (
       <div style={{backgroundColor: 'goldenrod'}}>
         <p style={{fontSize: 50}}>Welcome</p>
@@ -31,4 +39,10 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome;
+const mapStateToProps = state => {
+  return {
+    github: state.github,
+  };
+};
+
+export default connect (mapStateToProps) (Welcome);
